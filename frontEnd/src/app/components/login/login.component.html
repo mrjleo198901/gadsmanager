@@ -1,0 +1,25 @@
+<div class="container">
+    <div style="text-align: center"><br><br><br><br><br><br>
+        <h1>GAD Manager</h1>
+        <h2 style="color: #4a89dc">Bienvenid@</h2>
+    </div>
+    <form>
+        <mat-card>
+            <mat-form-field class="example-full-width">
+                <input matInput name="email" type="email" [(ngModel)]="email" placeholder="Email">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput name="pass" type="password" [(ngModel)]="password" placeholder="Password">
+            </mat-form-field>
+            <mat-checkbox style="text-align: left">Recuerdame!</mat-checkbox><br><br>
+            <button mat-stroked-button color="primary" class="btn-block" (click)="login()">Entrar</button><br><br>
+            <button id="btnRegister" mat-stroked-button color="link" class="btn-block" (click)="openDialog()">Registro</button><br><br>
+
+            <a style="cursor: pointer">¿Olvidaste tus credenciales?</a>
+
+        </mat-card>
+    </form>
+    <footer style="text-align: center">
+        © 2018 Universidad Nacional de Chimborazo. Todos los derechos reservados | Diseñado por PepitoSoft
+    </footer>
+</div>

@@ -1,0 +1,18 @@
+<h2>Registro</h2>
+<form (ngSubmit)="doLogin()" #formUser="ngForm">
+  <mat-form-field class="example-full-width">
+    <input matInput name="nombre" type="text" [(ngModel)]="objUser.nombre" placeholder="Nombre">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="apellido" type="text" [(ngModel)]="objUser.apellido" placeholder="Apellido">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="email" type="email" [(ngModel)]="objUser.correo" placeholder="Correo">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="pass" type="password" [(ngModel)]="objUser.password" placeholder="Password">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="rpass" type="password" [(ngModel)]="password" placeholder="Repite Password">
+  </mat-form-field>
+</form>

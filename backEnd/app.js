@@ -3,29 +3,25 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
-
-var io = require('socket.io')(3000);
-var mongoAdapter = require('socket.io-mongodb');
-
-const mongo = require('mongodb').MongoClient;
-const client = require('socket.io').listen(4000).sockets;
+const passport = require('passport');
+const config = require('./config/database');
 
 const app = express();
 
 //Connect to database
-mongoose.connect('mongodb://localhost:27017/unach', function (err, db) {
-    var i = 0;
-    client.on('connection', (socket) => {
-        socket.on('sendAlerta', (objAlerta) => {
-            i++;
-            console.log(i);
-            socket.emit('otherClick', i);
-        });
-    });
+var promise = mongoose.connect(config.database, { useNewUrlParser: true });
+mongoose.connection.on('connected', () => {
+    var dbName = config.database.split('/');
+    var n = dbName.length;
+    console.log('Connected to database: ' + dbName[n - 1]);
+});
+
+mongoose.connection.on('error', (error) => {
+    console.log('Database Error' + error)
 });
 
 //Port number
-const port = 3003;
+const port = 3000;
 
 //cors middleware
 app.use(cors());
@@ -38,10 +34,13 @@ app.get('/', (req, res) => {
     res.send('Invalid Endpoint');
 })
 
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
+
 app.use('/api', require('./routes/userApi'));
-app.use('/api', require('./routes/estudianteApi'));
-app.use('/api', require('./routes/viviendaApi'));
-app.use('/api', require('./routes/puntoApi'));
+app.use('/api', require('./routes/tipoUserApi'));
 
 //start server
 app.listen(port, () => {

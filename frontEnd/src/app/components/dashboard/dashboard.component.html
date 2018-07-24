@@ -1,0 +1,83 @@
+<div class="main-container">
+      <mat-toolbar color="primary" class="topbar telative mat-toolbar mat-primary mat-toolbar-single-row" style="box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5)">
+            <div class="navbar-header">
+                  <a class="navbar-brand" href="#">
+                  <b>
+                        <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo">
+                  </b>
+                  <span fxShow="false" fxShow.gt-xs>
+                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage">
+                  </span> </a>
+            </div>
+            <button mat-icon-button (click)="snav.toggle()" value="sidebarclosed">
+            <mat-icon>menu</mat-icon>
+      </button>
+            <span fxFlex></span>
+      </mat-toolbar>
+
+
+      <mat-sidenav-container class="example-sidenav-container mat-drawer-container mat-sidenav-container mat-drawer-transition"
+            style="margin-top: 0px;">
+
+            <mat-sidenav #snav class="dark-sidebar pl-xs mat-drawer mat-sidenav ng-tns-c5-0 ng-trigger ng-trigger-transform mat-drawer-side ng-star-inserted"
+                  [mode]="mobileQuery.matches ? 'side' : 'over'" fixedTopGap="0" id="snav" tabindex="-1" ng-reflect-mode="side"
+                  ng-reflect-disable-close="true" ng-reflect-opened="true" [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches">
+                  <!--Image user profile-->
+                  <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
+                        <div class="profile-img">
+                              <img alt="user" src="assets/images/users/profile1.png">
+                        </div>
+                        <div class="profile-text">
+                              <a aria-haspopup="true" class="" ng-reflect-menu="[object Object]">Leonardo Muñoz<i class="ti-angle-down font-12 m-l-5"></i>
+                              </a>
+                        </div>
+                  </div>
+                  <!--Menu Options-->
+                  <mat-nav-list class="mat-nav-list" role="navigation">
+
+                        <mat-list-item class="mat-list-item ng-star-inserted" routerlinkactive="selected">
+                              <a class="ng-star-inserted" style="flex-direction: row; box-sizing: border-box; display: flex;">
+                                    <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">crop_7_5</mat-icon>
+                                    <span>Buttons</span>
+                                    <span style="flex: 1 1 1e-09px; box-sizing: border-box;"></span>
+                              </a>
+                        </mat-list-item>
+
+                        <mat-list-item class="mat-list-item ng-star-inserted">
+                              <a class="ng-star-inserted" style="flex-direction: row; box-sizing: border-box; display: flex;">
+                                    <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">view_comfy</mat-icon>
+                                    <span>Grid List</span>
+                                    <span style="flex: 1 1 1e-09px; box-sizing: border-box;"></span>
+                              </a>
+                        </mat-list-item>
+
+                  </mat-nav-list>
+            </mat-sidenav>
+
+            <mat-sidenav-content class="page-wrapper">
+                  <div class="page-content">
+                        <div fxLayout="row" fxLayoutWrap="wrap">
+                              <!-- column -->
+                              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                    <mat-card>
+                                          <mat-card-content>
+                                                <!-- Row -->
+                                                <div fxLayout="row" fxLayoutWrap="wrap">
+                                                      <!-- column -->
+                                                      <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                                                            Buy our Pro version with tones of features
+                                                            <br/><br/>
+                                                            <a href="https://wrappixel.com/templates/materialpro-angular-dashboard/" mat-raised-button color="warn">Upgrade To Pro</a>
+                                                      </div>
+                                                </div>
+                                          </mat-card-content>
+                                    </mat-card>
+                              </div>
+                              <!-- column -->
+                        </div>
+                  </div>
+            </mat-sidenav-content>
+
+      </mat-sidenav-container>
+
+</div>
