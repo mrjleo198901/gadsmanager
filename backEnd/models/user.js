@@ -9,6 +9,7 @@ var userSchema = new mongoose.Schema({
     password: String,
     estado: Number,
     tipoUser: mongoose.Schema.Types.ObjectId
+    
 });
 
 //module.exports = restful.model('user', userSchema);

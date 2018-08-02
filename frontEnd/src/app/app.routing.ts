@@ -6,5 +6,5 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 export const AppRoutes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'spinner', component: SpinnerComponent }
+    { path: 'login', component: LoginComponent }
 ];

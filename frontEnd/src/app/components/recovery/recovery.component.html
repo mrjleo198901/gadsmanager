@@ -1,0 +1,29 @@
+<div *ngIf="screen">
+  <h3>Recuperar contraseña</h3><br>
+  <form (ngSubmit)="sendEmail()" #formUser="ngForm">
+    <div class="form-hint">Los campos marcados con (*) son obligatorios:</div><br>
+    <p>Ingresa tu correo:</p>
+    <mat-form-field class="example-full-width" style="width: 100%">
+      <input matInput name="email" type="email" minlength="10" autocomplete="off" [(ngModel)]="email" (ngModelChange)="onChangeCorreo()"
+        placeholder="Correo" required>
+    </mat-form-field><br>
+    <div *ngIf="showMessages">
+      <div [ngClass]="alertClass" role="alert">
+        {{messageAlert}}
+      </div>
+    </div><br>
+    <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser.form.valid || !flagMailFound">Aceptar</button><br><br>
+  </form>
+  <button mat-stroked-button color="warn" style="width: 100%" (click)="hideDialog()">Cancelar</button>
+</div>
+
+<div *ngIf="!screen">
+  <h3 style="text-align: center;">
+    <mat-icon class="md-36">mail_outline</mat-icon>&nbsp;&nbsp;{{progress}}
+  </h3><br>
+  <div class="text-align: center;" *ngIf="showBar">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div><br>
+  <p><strong>Nota:</strong>&nbsp;Si tu correo no se encuentra en tu bandeja de entrada, revisa tu bandeja de "Correo no deseado".</p>
+  <button mat-stroked-button color="primary" style="width: 100%" *ngIf="!showBar" (click)="hideDialog()">Genial</button>
+</div>

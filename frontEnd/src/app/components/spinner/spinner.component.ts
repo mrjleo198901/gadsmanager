@@ -15,7 +15,7 @@ export class SpinnerComponent {
       let v = document.getElementById('btnHide');
       if (v != null)
         v.click();
-    }, 2500);
+    }, 500);
   }
 
   doClick() {
