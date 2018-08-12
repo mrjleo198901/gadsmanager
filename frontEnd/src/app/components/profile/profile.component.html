@@ -1,0 +1,48 @@
+<form (ngSubmit)="update()" #formUser="ngForm">
+  <mat-card>
+    <h3>Datos de usuario</h3>
+    <mat-divider></mat-divider>
+    <mat-grid-list cols="3" rowHeight="3:1">
+
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="nombre" type="text" minlength="2" (click)="$event.target.select()" [(ngModel)]="objUser.nombre" (ngModelChange)="onChangeNombre($event)"
+            placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="apellido" type="text" minlength="2" (click)="$event.target.select()" [(ngModel)]="objUser.apellido"
+            (ngModelChange)="onChangeApellido($event)" placeholder="Apellido" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="email" type="email" [(ngModel)]="objUser.correo" (click)="$event.target.select()" placeholder="Correo"
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="password" type="password" minlength="8" [(ngModel)]="objUser.password" (ngModelChange)="onChangePass()"
+            (click)="$event.target.select()" placeholder="Password" required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="rPassword" type="password" minlength="8" [(ngModel)]="password" (ngModelChange)="onChangePassR()" (click)="$event.target.select()"
+            placeholder="Repita Password" required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <p *ngIf="showM" [ngStyle]="{'color': textColor}">{{msg}}</p>
+      </mat-grid-tile>
+      <mat-grid-tile style="text-align: center;">
+        <button mat-stroked-button color="primary" [disabled]="!formUser.form.valid || objUser.password != password" style="width: 50%">Guardar</button>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </mat-card>
+</form>

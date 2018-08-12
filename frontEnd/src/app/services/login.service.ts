@@ -29,10 +29,12 @@ export class LoginService {
 
   sendEmail(user) {
     httpOptions.reportProgress = true;
+    httpOptions.params = undefined;
     return this.http.post(this.uri + 'sendmail', user, httpOptions)
   }
 
   registerUser(user): Observable<any> {
+    httpOptions.params = undefined;
     return this.http.post(this.uri + 'user', user, httpOptions)
     /*.pipe(
       catchError(this.handleError('registerUser', user))
@@ -42,6 +44,7 @@ export class LoginService {
   getUserById(correo): Observable<User[]> {
     httpOptions.params = new HttpParams();
     httpOptions.params = httpOptions.params.append('correo', correo);
+    console.log(httpOptions)
     return this.http.get<User[]>(this.uri + 'user', httpOptions)
       .pipe(
       retry(1),
@@ -50,6 +53,8 @@ export class LoginService {
   }
 
   updateUser(user): Observable<User> {
+    httpOptions.params = undefined;
+    console.log(httpOptions);
     return this.http.put<User>(this.uri + 'user/' + user._id, user, httpOptions)
       .pipe(
       retry(1),
@@ -58,6 +63,8 @@ export class LoginService {
   }
 
   authenticateUser(user) {
+    httpOptions.params = undefined;
+    console.log(httpOptions);
     return this.http.post(this.uri + 'authenticate', user, httpOptions)
       .pipe(
       map(res => res),
@@ -66,7 +73,7 @@ export class LoginService {
   }
 
   sendEmailProgress(user) {
-
+    httpOptions.params = undefined;
     const req = new HttpRequest('POST', this.uri + 'sendmail', user, {
       reportProgress: true
     });

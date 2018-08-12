@@ -6,6 +6,7 @@ import { RecoveryComponent } from '../recovery/recovery.component';
 import { MessageGrowlService } from '../../services/message-growl.service';
 import { LoginService } from '../../services/login.service';
 import { ValidateService } from '../../services/validate.service';
+import { AuthenticateService } from '../../services/authenticate.service';
 
 import { SentComponent } from '../sent/sent.component';
 
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     public messages: MessageGrowlService,
     public loginService: LoginService,
     public validateService: ValidateService,
-    public router: Router
+    public router: Router,
+    public authService: AuthenticateService
   ) { }
 
   ngOnInit() {
@@ -44,8 +46,9 @@ export class LoginComponent implements OnInit {
     }
     this.loginService.authenticateUser(this.objLogin).subscribe(data => {
       if (data.success) {
+        this.authService.storeUserData(data.token, data.user);
         this.messages.notify('info', 'Información', 'Bienvenido ' + data.user.nombre.split(' ')[0]);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard/general']);
       } else {
         this.messages.notify('error', 'Error', data.msg);
       }

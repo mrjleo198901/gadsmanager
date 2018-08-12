@@ -1,9 +1,10 @@
+'use strict'
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const path = require('path');
 const passport = require('passport');
+const mongoose = require('mongoose');
 const config = require('./config/database');
 
 const app = express();
@@ -29,18 +30,21 @@ app.use(cors());
 //body-parser middleware
 app.use(bodyParser.json());
 
-//index route
-app.get('/', (req, res) => {
-    res.send('Invalid Endpoint');
-})
-
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
 
+//index route
+app.get('/', (req, res) => {
+    res.send('Invalid Endpoint');
+})
+
+//Routes
 app.use('/api', require('./routes/userApi'));
 app.use('/api', require('./routes/tipoUserApi'));
+app.use('/api', require('./routes/comentarioApi'));
+app.use('/api', require('./routes/parroquiaApi'));
 
 //start server
 app.listen(port, () => {

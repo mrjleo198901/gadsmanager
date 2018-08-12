@@ -1,0 +1,7 @@
+<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5"> <img src="assets/images/users/profile4.png" width="100%" alt="user" class="profile-pic"> </button>
+<mat-menu #profile="matMenu" class="mymegamenu">
+  <button mat-menu-item (click)="loadProfile()">
+        <mat-icon>account_box</mat-icon>Perfil&nbsp;&nbsp;&nbsp;</button>
+  <button mat-menu-item (click)="onLogOutClick()">
+        <mat-icon>exit_to_app</mat-icon>Salir&nbsp;&nbsp;&nbsp;</button>
+</mat-menu>

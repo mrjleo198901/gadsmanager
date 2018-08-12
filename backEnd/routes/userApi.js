@@ -21,7 +21,7 @@ router.post('/authenticate', (req, res, next) => {
             res.send({ success: false, msg: 'Usuario no encontrado!' });
         } else {
             var token = jwt.sign({ loggedUser: user._id }, config.secret, {
-                expiresIn: 60 //1 semana
+                expiresIn: 1800 // 30 min
             });
             res.send({
                 success: true,
@@ -31,7 +31,7 @@ router.post('/authenticate', (req, res, next) => {
         }
     });
 });
-
+//Send Email
 router.post('/sendmail', (req, res, next) => {
     var sujeto = req.body.name;
     var randomPass = req.body.npass;

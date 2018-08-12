@@ -1,0 +1,114 @@
+<mat-card>
+  <h3>Contenido Parroquia</h3>
+  <mat-divider></mat-divider><br>
+  <!--Datos Generales-->
+  <h4>Datos Generales</h4>
+  <mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="nombre" type="text" minlength="2" (click)="$event.target.select()" [(ngModel)]="objParroquia.nombre"
+          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="telefono" type="tel" minlength="7" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objParroquia.telefono"
+          placeholder="Teléfono" required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="correo" type="email" minlength="10" (click)="$event.target.select()" [(ngModel)]="objParroquia.correo"
+          placeholder="Correo" required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="lat" type="number" step="0.001" (click)="$event.target.select()" [(ngModel)]="objParroquia.latitud"
+          placeholder="Latitud" required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="long" type="number" step="0.001" (click)="$event.target.select()" [(ngModel)]="objParroquia.longitud"
+          placeholder="Longitud" required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <!--Autoridades-->
+  <h4>Autoridades</h4>
+  <mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="cedula" type="text" minlength="10" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cedula"
+          placeholder="Cédula" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="nombreAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.nombre"
+          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="cargoAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
+          placeholder="Cargo" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="fechaFiliacion" type="date" minlength="9" (click)="$event.target.select()" [(ngModel)]="objAutoridad.fecha"
+          placeholder="Fecha de Filiación" required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="telefonoAut" type="text" minlength="7" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.telefono"
+          placeholder="Teléfono" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="correoAut" type="email" minlength="10" (click)="$event.target.select()" [(ngModel)]="objParroquia.correo"
+          placeholder="Correo" required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="Profesion" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.profesion"
+          placeholder="Profesión" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <!--<h4>Actividades Económicas</h4>
+  <mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile>
+
+    </mat-grid-tile>
+  </mat-grid-list>-->
+  <!--
+  
+  <h4>Gastronomía</h4>
+  <h4>Turismo</h4>
+  <h4>Historia</h4>
+  <h4>Galeria</h4>-->
+
+  <button mat-stroked-button color="primary" style="width: 50%">Guardar</button>
+</mat-card>

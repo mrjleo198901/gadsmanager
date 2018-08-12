@@ -15,6 +15,10 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { SentComponent } from './components/sent/sent.component';
+import { ConfigurationComponent } from './components/configuration/configuration.component';
+import { MenuProfileComponent } from './components/menu-profile/menu-profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { GeneralComponent } from './components/general/general.component';
 /* Services */
 import { MessageGrowlService } from './services/message-growl.service';
 import { ValidateService } from './services/validate.service';
@@ -25,8 +29,10 @@ import { MaterialComponents } from './material-components.module';
 import { MatIconModule } from '@angular/material';
 /* PrimeNG */
 import { GrowlModule } from 'primeng/primeng';
+import { TableModule } from 'primeng/table';
 /* Routing */
 import { AppRoutes } from './app.routing';
+import { ParroquiaDesignComponent } from './components/parroquia-design/parroquia-design.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,12 @@ import { AppRoutes } from './app.routing';
     SpinnerComponent,
     NotificationComponent,
     RecoveryComponent,
-    SentComponent
+    SentComponent,
+    ConfigurationComponent,
+    MenuProfileComponent,
+    ProfileComponent,
+    GeneralComponent,
+    ParroquiaDesignComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +59,7 @@ import { AppRoutes } from './app.routing';
     MaterialComponents,
     MatIconModule,
     GrowlModule,
+    TableModule,
     RouterModule.forRoot(AppRoutes)
   ],
   entryComponents: [
