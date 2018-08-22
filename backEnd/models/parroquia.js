@@ -17,6 +17,7 @@ var subSchemaBarrio = mongoose.Schema({
     presidente: String
 }, { _id: true });
 var subSchemaActividadEco = mongoose.Schema({
+    nombre: String,
     descripcion: String,
 }, { _id: true });
 var subSchemaGastro = mongoose.Schema({

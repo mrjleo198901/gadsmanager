@@ -1,0 +1,36 @@
+<h3 style="text-align: center">Añadir Autoridad</h3><br>
+<form (ngSubmit)="save()" #formUser="ngForm">
+  <mat-form-field class="example-full-width">
+    <input matInput name="cedula" type="text" minlength="10" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cedula"
+      placeholder="Cédula" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="nombreAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.nombre"
+      placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+      required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="cargoAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
+      placeholder="Cargo" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+      required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="fechaFiliacion" type="date" minlength="9" (click)="$event.target.select()" [(ngModel)]="objAutoridad.fecha"
+      placeholder="Fecha de Filiación" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="telefonoAut" type="text" minlength="7" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.telefono"
+      placeholder="Teléfono" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="correoAut" type="email" minlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.correo"
+      placeholder="Correo" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="Profesion" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.profesion"
+      placeholder="Profesión" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+      required>
+  </mat-form-field><br>
+  <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser.form.valid">Aceptar</button><br><br>
+</form>
+<button mat-stroked-button color="warn" style="width: 100%" (click)="hide()">Cancelar</button>

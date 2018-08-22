@@ -30,9 +30,19 @@ import { MatIconModule } from '@angular/material';
 /* PrimeNG */
 import { GrowlModule } from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { GalleriaModule } from 'primeng/galleria';
 /* Routing */
 import { AppRoutes } from './app.routing';
 import { ParroquiaDesignComponent } from './components/parroquia-design/parroquia-design.component';
+import { ParAutoridadComponent } from './components/par-autoridad/par-autoridad.component';
+import { ParBarrioComponent } from './components/par-barrio/par-barrio.component';
+import { ParActividadComponent } from './components/par-actividad/par-actividad.component';
+import { ParGastroComponent } from './components/par-gastro/par-gastro.component';
+import { ParTurismoComponent } from './components/par-turismo/par-turismo.component';
+import { ParHistoriaComponent } from './components/par-historia/par-historia.component';
+import { ParGaleriaComponent } from './components/par-galeria/par-galeria.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +58,14 @@ import { ParroquiaDesignComponent } from './components/parroquia-design/parroqui
     MenuProfileComponent,
     ProfileComponent,
     GeneralComponent,
-    ParroquiaDesignComponent
+    ParroquiaDesignComponent,
+    ParAutoridadComponent,
+    ParBarrioComponent,
+    ParActividadComponent,
+    ParGastroComponent,
+    ParTurismoComponent,
+    ParHistoriaComponent,
+    ParGaleriaComponent
   ],
   imports: [
     BrowserModule,
@@ -60,12 +77,22 @@ import { ParroquiaDesignComponent } from './components/parroquia-design/parroqui
     MatIconModule,
     GrowlModule,
     TableModule,
+    DialogModule,
+    ButtonModule,
+    GalleriaModule,
     RouterModule.forRoot(AppRoutes)
   ],
   entryComponents: [
     RegistroComponent,
     RecoveryComponent,
-    SentComponent
+    SentComponent,
+    ParAutoridadComponent,
+    ParBarrioComponent,
+    ParActividadComponent,
+    ParGastroComponent,
+    ParTurismoComponent,
+    ParHistoriaComponent,
+    ParGaleriaComponent
   ],
   providers: [
     MessageGrowlService,

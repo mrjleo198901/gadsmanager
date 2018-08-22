@@ -17,13 +17,18 @@ const httpOptions = {
 export class ParroquiaService {
   public uri: string;
 
-  constructor(public http: HttpClient) { 
+  constructor(public http: HttpClient) {
     this.uri = GLOBAL.url;
   }
 
   register(parroquia): Observable<any> {
     httpOptions.params = undefined;
-    return this.http.post(this.uri + 'parroquia', parroquia, httpOptions)
+    return this.http.post(this.uri + 'parroquia', parroquia, httpOptions);
+  }
+
+  update(parroquia) {
+    httpOptions.params = undefined;
+    return this.http.put(this.uri + 'parroquia/' + parroquia._id, parroquia, httpOptions);
   }
 
   getAll(): Observable<any[]> {

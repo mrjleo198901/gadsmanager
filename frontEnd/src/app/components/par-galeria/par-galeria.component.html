@@ -1,0 +1,8 @@
+<h3 style="text-align: center">Añadir Galería</h3><br>
+<form (ngSubmit)="save()" #formUser="ngForm">
+  <mat-form-field class="example-full-width">
+    <input matInput name="desc" type="file" [(ngModel)]="file" placeholder="Subir imagen" required>
+  </mat-form-field><br>
+  <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser.form.valid">Aceptar</button><br><br>
+</form>
+<button mat-stroked-button color="warn" style="width: 100%" (click)="hide()">Cancelar</button>

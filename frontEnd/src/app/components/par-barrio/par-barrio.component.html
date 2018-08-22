@@ -1,0 +1,23 @@
+<h3 style="text-align: center">Añadir Barrio/Comunidad</h3><br>
+<form (ngSubmit)="save()" #formUser="ngForm">
+  <mat-form-field class="example-full-width">
+    <input matInput name="nombrePresi" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objBarrio.presidente"
+      placeholder="Presidente" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+      required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="nroHab" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objBarrio.nroHabitantes"
+      placeholder="Numero de Habitantes" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+      required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="altitud" type="date" minlength="9" (click)="$event.target.select()" [(ngModel)]="objBarrio.altitud"
+      placeholder="Altitud" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="desc" type="text" minlength="7" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objBarrio.descripcion"
+      placeholder="Descripción" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+  </mat-form-field><br>
+  <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser.form.valid">Aceptar</button><br><br>
+</form>
+<button mat-stroked-button color="warn" style="width: 100%" (click)="hide()">Cancelar</button>
