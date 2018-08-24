@@ -5,9 +5,11 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GeneralComponent } from './components/general/general.component';
-import { ParroquiaDesignComponent } from './components/parroquia-design/parroquia-design.component'
+import { ParroquiaDesignComponent } from './components/parroquia-design/parroquia-design.component';
 
 export const AppRoutes: Routes = [
+
+    
     { path: '', component: LoginComponent },
     {
         path: 'dashboard',
@@ -21,7 +23,8 @@ export const AppRoutes: Routes = [
             component: GeneralComponent
         }, {
             path: 'parroquiaDesign',
-            component: ParroquiaDesignComponent
+            component: ParroquiaDesignComponent,
+            data : {some_data : 'some value'}
         }]
     },
     { path: 'login', component: LoginComponent }

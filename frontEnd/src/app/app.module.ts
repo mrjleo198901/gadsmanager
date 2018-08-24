@@ -27,6 +27,7 @@ import { MessageService } from './services/message.service';
 /* Material components */
 import { MaterialComponents } from './material-components.module';
 import { MatIconModule } from '@angular/material';
+import {MatDialogModule} from '@angular/material'
 /* PrimeNG */
 import { GrowlModule } from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
@@ -80,6 +81,7 @@ import { ParGaleriaComponent } from './components/par-galeria/par-galeria.compon
     DialogModule,
     ButtonModule,
     GalleriaModule,
+    MatDialogModule,
     RouterModule.forRoot(AppRoutes)
   ],
   entryComponents: [

@@ -44,10 +44,10 @@
   <!--Autoridades-->
   <h4>Autoridades</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
-    <p-table [value]="lstAutoridades">
+    <p-table [value]="objParroquia.autoridad">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
-          <button type="button" pButton icon="fa fa-plus" (click)="openDialogAutoridad();" label="Add"></button>
+          <button type="button" pButton icon="fa fa-plus" (click)="displayAuto=true" label="Add"></button>
         </div>
       </ng-template>
       <ng-template pTemplate="header">
@@ -77,10 +77,10 @@
   <!--Barrio/Comunidad-->
   <h4>Barrio/Comunidad</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
-    <p-table [value]="lstBarrios">
+    <p-table [value]="objParroquia.barrio">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
-          <button type="button" pButton icon="fa fa-plus" (click)="openDialogBarrio();" label="Add"></button>
+          <button type="button" pButton icon="fa fa-plus" (click)="displayBarrio=true" label="Add"></button>
         </div>
       </ng-template>
       <ng-template pTemplate="header">
@@ -104,10 +104,10 @@
   <!-- Actividad -->
   <h4>Activiades Económicas</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
-    <p-table [value]="lstBarrios">
+    <p-table [value]="objParroquia.actividadEco">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
-          <button type="button" pButton icon="fa fa-plus" (click)="openDialogActividad();" label="Add"></button>
+          <button type="button" pButton icon="fa fa-plus" (click)="displayAct=true;" label="Add"></button>
         </div>
       </ng-template>
       <ng-template pTemplate="header">
@@ -127,20 +127,135 @@
   <!-- Gastronomía -->
   <h4>Gastronomía</h4>
   <mat-form-field style="width: 100%">
-    <textarea matInput placeholder="Descripción"></textarea>
+    <textarea matInput placeholder="Descripción" [(ngModel)]="objParroquia.gastronomia"></textarea>
   </mat-form-field><br>
   <!-- Turísmo -->
   <h4>Turísmo</h4>
   <mat-form-field style="width: 100%">
-    <textarea matInput placeholder="Descripción"></textarea>
+    <textarea matInput placeholder="Descripción" [(ngModel)]="objParroquia.turismo"></textarea>
   </mat-form-field><br>
   <!-- Historia -->
   <h4>Historia</h4>
   <mat-form-field style="width: 100%">
-    <textarea matInput placeholder="Descripción"></textarea>
+    <textarea matInput placeholder="Descripción" [(ngModel)]="objParroquia.historia"></textarea>
   </mat-form-field>
   <!-- Galería -->
   <h4>Galería</h4>
-  <p-galleria [images]="images" panelWidth="500" panelHeight="313" showCaption="true"></p-galleria>
-  <button mat-stroked-button color="primary" style="width: 50%; text-align: center">Guardar</button>
+  <p-galleria [images]="images" panelWidth="500" panelHeight="313" showCaption="true"></p-galleria><br><br>
+  <button mat-stroked-button color="primary" (click)="saveAll()" style="width: 100%; text-align: center">Guardar</button>
 </mat-card>
+
+
+<!-- DIALOGS -->
+
+<p-dialog header="Añadir Autoridad" [(visible)]="displayAuto" [width]="450">
+  <form (ngSubmit)="save()" #formUser="ngForm">
+    <mat-grid-list cols="2" rowHeight="3:1">
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="cedula" type="text" minlength="10" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cedula"
+            placeholder="Cédula" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="nombreAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.nombre"
+            placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="cargoAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
+            placeholder="Cargo" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="fechaFiliacion" type="date" minlength="9" (click)="$event.target.select()" [(ngModel)]="objAutoridad.fechaFiliacion"
+            placeholder="Fecha de Filiación" required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="telefonoAut" type="text" minlength="7" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.telefono"
+            placeholder="Teléfono" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="correoAut" type="email" minlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.correo"
+            placeholder="Correo" required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="Profesion" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.profesion"
+            placeholder="Profesión" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser.form.valid">Aceptar</button><br><br>
+  </form>
+  <button mat-stroked-button color="warn" style="width: 100%" (click)="displayBarrio=false;">Cancelar</button>
+</p-dialog>
+
+<p-dialog header="Añadir Barrio" [(visible)]="displayBarrio" [width]="450">
+  <form (ngSubmit)="saveBarrio()" #formUser1="ngForm">
+    <mat-grid-list cols="2" rowHeight="3:1">
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="nombrePresi" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objBarrio.presidente"
+            placeholder="Presidente" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="nroHab" type="number" min="0" (click)="$event.target.select()" [(ngModel)]="objBarrio.nroHabitantes"
+            placeholder="Numero de Habitantes" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="altitud" type="number" min="0" (click)="$event.target.select()" [(ngModel)]="objBarrio.altitud" placeholder="Altitud"
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="desc" type="text" minlength="7" (click)="$event.target.select()" [(ngModel)]="objBarrio.descripcion"
+            placeholder="Descripción" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser1.form.valid">Aceptar</button><br><br>
+  </form>
+  <button mat-stroked-button color="warn" style="width: 100%" (click)="displayBarrio=false;">Cancelar</button>
+</p-dialog>
+
+<p-dialog header="Añadir Actividad Económica" [(visible)]="displayAct" [width]="450">
+  <form (ngSubmit)="saveAct()" #formUser2="ngForm">
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="nombreAct" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objActividad.nombre"
+            placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <textarea matInput name="desc" [(ngModel)]="objActividad.descripcion" placeholder="Descripción" required></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser2.form.valid">Aceptar</button><br><br>
+  </form>
+  <button mat-stroked-button color="warn" style="width: 100%" (click)="displayAct=false;">Cancelar</button>
+</p-dialog>

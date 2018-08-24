@@ -36,15 +36,15 @@
                   </div>
                   <!--Menu Options-->
                   <mat-nav-list class="mat-nav-list" role="navigation">
-                        <mat-list-item (click)="goGeneral()" class="fakeBorder mat-list-item ng-star-inserted" routerlinkactive="selected">
-                              <a class="ng-star-inserted"  style="flex-direction: row; box-sizing: border-box; display: flex;">
+                        <mat-list-item (click)="goGeneral()" class="mat-list-item ng-star-inserted" routerlinkactive="selected">
+                              <a class="ng-star-inserted" style="flex-direction: row; box-sizing: border-box; display: flex;">
                                     <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">view_comfy</mat-icon>
                                     <span>General</span>
                                     <span style="flex: 1 1 1e-09px; box-sizing: border-box;"></span>
                               </a>
                         </mat-list-item>
 
-                        <mat-list-item (click)="goParroquiaDesign()" class="mat-list-item ng-star-inserted" *ngFor="let entry of menuOptions">
+                        <mat-list-item (click)="goParroquiaDesign(entry);" class="mat-list-item ng-star-inserted" *ngFor="let entry of menuOptions">
                               <a class="ng-star-inserted" style="flex-direction: row; box-sizing: border-box; display: flex;">
                                     <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">crop_7_5</mat-icon>
                                     <span>{{entry.nombre}}</span>

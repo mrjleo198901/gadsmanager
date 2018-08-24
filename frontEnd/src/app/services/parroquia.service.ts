@@ -7,7 +7,7 @@ const httpOptions = {
   headers: new HttpHeaders(
     { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200' }
   ),
-  params: undefined,
+  params: new HttpParams(),
   reportProgress: false
 };
 
@@ -34,6 +34,17 @@ export class ParroquiaService {
   getAll(): Observable<any[]> {
     httpOptions.params = undefined;
     return this.http.get<any[]>(this.uri + 'parroquia', httpOptions);
+  }
+
+  getUserById(message) {
+    let headers = new HttpHeaders();
+    headers  = headers.append('Content-Type', 'application/json');
+    headers  = headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
+
+    let params = new HttpParams();
+    params = params.append('_id', message._id);
+
+    return this.http.get(this.uri + 'parroquia', {headers , params });
   }
 
 }

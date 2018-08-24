@@ -1,12 +1,10 @@
 <h3 style="text-align: center">Añadir Actividad Económica</h3><br>
 <form (ngSubmit)="save()" #formUser="ngForm">
   <mat-form-field style="width: 100%">
-    <input matInput name="nombre" type="text" minlength="7" maxlength="10" (click)="$event.target.select()" [(ngModel)]="nombre"
-      placeholder="Nombre" required>
+
   </mat-form-field><br>
-  <mat-form-field  style="width: 100%">
-    <textarea matInput name="desc" [(ngModel)]="descripcion"
-      placeholder="Descripción" required></textarea>
+  <mat-form-field style="width: 100%">
+   
   </mat-form-field><br>
   <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser.form.valid">Aceptar</button><br><br>
 </form>

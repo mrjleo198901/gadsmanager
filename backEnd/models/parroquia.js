@@ -45,10 +45,10 @@ var parroquiaSchema = new mongoose.Schema({
     autoridad: [subSchemaAutoridad],
     barrio: [subSchemaBarrio],
     actividadEco: [subSchemaActividadEco],
-    gastronomia: [subSchemaGastro],
-    turismo: [subSchemaTurismo],
-    historia: [subSchemaHistoria],
-    galeria: [subSchemaGaleria]
+    gastronomia: String,
+    turismo: String,
+    historia: String,
+    galeria: String
 
 });
 

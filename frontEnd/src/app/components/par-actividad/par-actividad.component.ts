@@ -17,11 +17,10 @@ export class ParActividadComponent implements OnInit {
 
   ngOnInit() {
   }
-  nombre: '';
-  descripcion: '';
+
 
   save() {
-
+    
   }
   hide(): void {
     this.dialog.closeAll();
