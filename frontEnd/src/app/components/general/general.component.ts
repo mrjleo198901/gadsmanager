@@ -8,10 +8,20 @@ import { MessageGrowlService } from '../../services/message-growl.service';
   styleUrls: ['./general.component.css']
 })
 export class GeneralComponent implements OnInit {
+  cols: any = [];
 
   constructor(private parroquia: ParroquiaService, private messages: MessageGrowlService) { }
 
   ngOnInit() {
+    this.cols = [];
+    this.cols = [
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'telefono', header: 'Teléfono' },
+      { field: 'correo', header: 'Correo' },
+      { field: 'lat', header: 'Latitud' },
+      { field: 'lng', header: 'Longitud' }
+    ];
+
     this.parroquia.getAll().subscribe(data => {
       this.lstParroquias = data;
     }, err => {

@@ -171,7 +171,6 @@
     <input class="delete" type="button" value="Eliminar" (click)="delete(i)" />
   </div>
 
-
   <form #imagenForm=ngForm>
     <div class="ui-g-12" style="text-align: center;">
       <button type="button" (click)="saveInArray()" style="width: 200px;">Subir</button>
@@ -181,7 +180,6 @@
     <div class="ui-g-12" style="text-align: center;">
       <input type="file" #Image pButton (change)="cargaImagen($event.target.files)">
     </div>
-
 
   </form>
   <br><br>
