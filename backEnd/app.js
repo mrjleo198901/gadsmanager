@@ -28,7 +28,8 @@ const port = 3000;
 app.use(cors());
 
 //body-parser middleware
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: '2mb'}));
+app.use(bodyParser.json({limit: '2mb'}));
 
 //passport middleware
 app.use(passport.initialize());

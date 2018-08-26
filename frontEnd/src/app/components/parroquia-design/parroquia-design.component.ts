@@ -17,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './parroquia-design.component.html',
   styleUrls: ['./parroquia-design.component.css']
 })
-export class ParroquiaDesignComponent implements OnInit, AfterViewInit {
+export class ParroquiaDesignComponent implements OnInit {
   @Input() value;
 
   constructor(
@@ -44,27 +44,19 @@ export class ParroquiaDesignComponent implements OnInit, AfterViewInit {
       this.objParroquia.longitud = this.message.longitud;
       if (message != undefined) {
         this.parroquiaService.getUserById(message).subscribe(data => {
-          console.log(data)
           this.objParroquia = data[0];
+          this.images = [];
+          for (let entry of this.objParroquia.galeria) {
+            this.images.push(entry);
+          }
+          console.log(this.images);
         });
       }
 
     })
 
-    this.images = [];
-    this.images.push({ source: 'assets/images/users/1.jpg', alt: 'Description for Image 1', title: 'Title 1' });
-    this.images.push({ source: 'assets/images/users/2.jpg', alt: 'Description for Image 2', title: 'Title 2' });
-    this.images.push({ source: 'assets/images/users/3.jpg', alt: 'Description for Image 3', title: 'Title 3' });
-    this.images.push({ source: 'assets/images/users/4.jpg', alt: 'Description for Image 4', title: 'Title 4' });
-    this.images.push({ source: 'assets/images/users/5.jpg', alt: 'Description for Image 5', title: 'Title 5' });
-    this.images.push({ source: 'assets/images/users/6.jpg', alt: 'Description for Image 6', title: 'Title 6' });
-    this.images.push({ source: 'assets/images/users/7.jpg', alt: 'Description for Image 7', title: 'Title 7' });
-
   }
-  ngAfterViewInit() {
-    /**/
 
-  }
 
   objParroquia = {
     _id: '',
@@ -79,7 +71,8 @@ export class ParroquiaDesignComponent implements OnInit, AfterViewInit {
     gastronomia: '',
     turismo: '',
     historia: '',
-    galeria: ''
+    galeria: [],
+    fiestas: []
   }
 
   objAutoridad = {
@@ -135,11 +128,12 @@ export class ParroquiaDesignComponent implements OnInit, AfterViewInit {
   displayAuto = false;
   displayBarrio = false;
   displayAct = false;
+  displayFiestas = false;
   save() {
     this.objParroquia.autoridad.push(this.objAutoridad);
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
       this.displayAuto = false;
-      this.messages.notify('success',"Exito","Datos guardados!");
+      this.messages.notify('success', "Exito", "Datos guardados!");
     });
   }
   objBarrio = {
@@ -154,10 +148,14 @@ export class ParroquiaDesignComponent implements OnInit, AfterViewInit {
     this.objParroquia.barrio.push(this.objBarrio);
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
       this.displayBarrio = false;
-      this.messages.notify('success',"Exito","Datos guardados!");
+      this.messages.notify('success', "Exito", "Datos guardados!");
     });
   }
   objActividad = {
+    nombre: '',
+    descripcion: ''
+  }
+  objFiestas = {
     nombre: '',
     descripcion: ''
   }
@@ -167,15 +165,46 @@ export class ParroquiaDesignComponent implements OnInit, AfterViewInit {
     this.objParroquia.actividadEco.push(this.objActividad);
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
       this.displayAct = false;
-      this.messages.notify('success',"Exito","Datos guardados!");
+      this.messages.notify('success', "Exito", "Datos guardados!");
+    });
+  }
+
+  saveFiestas() {
+    this.objParroquia.fiestas.push(this.objFiestas);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.displayFiestas = false;
+      this.messages.notify('success', "Exito", "Datos guardados!");
     });
   }
 
   saveAll() {
+    this.objParroquia.galeria = [];
+    this.objParroquia.galeria = this.images;
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
-      this.messages.notify('success',"Exito","Datos guardados!");
+      this.messages.notify('success', "Exito", "Datos guardados!");
     });
   }
 
+  fileImagen: File = null;
+  urlImagen: any = 'assets/images/user.png';
+  uploadedFiles: any;
+  // Cargar imagen
+  cargaImagen(file: FileList) {
+    this.fileImagen = file.item(0);
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.urlImagen = event.target.result;
+    };
+    reader.readAsDataURL(this.fileImagen);
+  }
+
+  delete(i) {
+    this.images.splice(i, 1);
+    
+  }
+  saveInArray() {
+    this.images.push({ source: this.urlImagen, alt: 'desc', title: 'img' });
+    console.log(this.images);
+  }
 
 }

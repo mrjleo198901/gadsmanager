@@ -139,15 +139,57 @@
   <mat-form-field style="width: 100%">
     <textarea matInput placeholder="Descripción" [(ngModel)]="objParroquia.historia"></textarea>
   </mat-form-field>
+  <!-- Fiestas Patronales -->
+  <h4>Fiestas</h4>
+  <mat-grid-list cols="3" rowHeight="3:1">
+    <p-table [value]="objParroquia.fiestas">
+      <ng-template pTemplate="caption">
+        <div style="text-align:left">
+          <button type="button" pButton icon="fa fa-plus" (click)="displayFiestas=true;" label="Add"></button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-car>
+        <tr>
+          <td>{{car.nombre}}</td>
+          <td>{{car.descripcion}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </mat-grid-list><br>
   <!-- Galería -->
   <h4>Galería</h4>
-  <p-galleria [images]="images" panelWidth="500" panelHeight="313" showCaption="true"></p-galleria><br><br>
+  <p style="color: steelblue">Tamaño máximo 2Mb.</p>
+
+  <div class="ui-g-4 show-image" *ngFor="let entry of images;  let i = index">
+    <img [(src)]=entry.source style="width: 200px; height: 175px;">
+    <input class="delete" type="button" value="Eliminar" (click)="delete(i)" />
+  </div>
+
+
+  <form #imagenForm=ngForm>
+    <div class="ui-g-12" style="text-align: center;">
+      <button type="button" (click)="saveInArray()" style="width: 200px;">Subir</button>
+    </div>
+    <div class="ui-g-12" style="text-align: center;">
+      <img [(src)]="urlImagen" style="width: 200px; height: 175px;"></div>
+    <div class="ui-g-12" style="text-align: center;">
+      <input type="file" #Image pButton (change)="cargaImagen($event.target.files)">
+    </div>
+
+
+  </form>
+  <br><br>
   <button mat-stroked-button color="primary" (click)="saveAll()" style="width: 100%; text-align: center">Guardar</button>
 </mat-card>
 
 
 <!-- DIALOGS -->
-
 <p-dialog header="Añadir Autoridad" [(visible)]="displayAuto" [width]="450">
   <form (ngSubmit)="save()" #formUser="ngForm">
     <mat-grid-list cols="2" rowHeight="3:1">
@@ -258,4 +300,25 @@
     <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser2.form.valid">Aceptar</button><br><br>
   </form>
   <button mat-stroked-button color="warn" style="width: 100%" (click)="displayAct=false;">Cancelar</button>
+</p-dialog>
+
+<p-dialog header="Añadir Fiesta" [(visible)]="displayFiestas" [width]="450">
+  <form (ngSubmit)="saveFiestas()" #formUser3="ngForm">
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input matInput name="nombreAct" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objFiestas.nombre"
+            placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+            required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <textarea matInput name="desc" [(ngModel)]="objFiestas.descripcion" placeholder="Descripción" required></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser3.form.valid">Aceptar</button><br><br>
+  </form>
+  <button mat-stroked-button color="warn" style="width: 100%" (click)="displayFiestas=false;">Cancelar</button>
 </p-dialog>

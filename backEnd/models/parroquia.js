@@ -41,14 +41,14 @@ var parroquiaSchema = new mongoose.Schema({
     correo: String,
     latitud: Number,
     longitud: Number,
-
     autoridad: [subSchemaAutoridad],
     barrio: [subSchemaBarrio],
     actividadEco: [subSchemaActividadEco],
     gastronomia: String,
     turismo: String,
     historia: String,
-    galeria: String
+    galeria: Array,
+    fiestas: Array
 
 });
 
