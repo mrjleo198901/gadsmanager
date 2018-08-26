@@ -202,6 +202,7 @@ export class ParroquiaDesignComponent implements OnInit {
     this.images.splice(i, 1);
     
   }
+  
   saveInArray() {
     this.images.push({ source: this.urlImagen, alt: 'desc', title: 'img' });
     console.log(this.images);
