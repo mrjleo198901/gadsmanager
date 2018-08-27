@@ -59,6 +59,7 @@
           <th>Teléfono</th>
           <th>Correo</th>
           <th>Profesión</th>
+          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
@@ -70,6 +71,11 @@
           <td>{{car.telefono}}</td>
           <td>{{car.correo}}</td>
           <td>{{car.profesion}}</td>
+
+          <td>
+            <button pButton type="button" (click)="deleteRowAuto(index)" icon="fa fa-close" class="ui-button-danger"></button>
+          </td>
+
         </tr>
       </ng-template>
     </p-table>
@@ -89,6 +95,7 @@
           <th>Nro. Habitantes</th>
           <th>Altitud</th>
           <th>Descripción</th>
+          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
@@ -97,6 +104,9 @@
           <td>{{car.nroHabitantes}}</td>
           <td>{{car.altitud}}</td>
           <td>{{car.descripcion}}</td>
+          <td>
+            <button pButton type="button" (click)="deleteRowBar(index)" icon="fa fa-close" class="ui-button-danger"></button>
+          </td>
         </tr>
       </ng-template>
     </p-table>
@@ -114,12 +124,16 @@
         <tr>
           <th>Nombre</th>
           <th>Descripción</th>
+          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
         <tr>
           <td>{{car.nombre}}</td>
           <td>{{car.descripcion}}</td>
+          <td>
+            <button pButton type="button" (click)="deleteRowAct(index)" icon="fa fa-close" class="ui-button-danger"></button>
+          </td>
         </tr>
       </ng-template>
     </p-table>
@@ -152,12 +166,16 @@
         <tr>
           <th>Nombre</th>
           <th>Descripción</th>
+          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
         <tr>
           <td>{{car.nombre}}</td>
           <td>{{car.descripcion}}</td>
+          <td>
+            <button pButton type="button" (click)="deleteRowFiesta(index)" icon="fa fa-close" class="ui-button-danger"></button>
+          </td>
         </tr>
       </ng-template>
     </p-table>
@@ -182,6 +200,7 @@
     </div>
 
   </form>
+
   <br><br>
   <button mat-stroked-button color="primary" (click)="saveAll()" style="width: 100%; text-align: center">Guardar</button>
 </mat-card>
@@ -269,7 +288,7 @@
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
           <input matInput name="desc" type="text" minlength="7" (click)="$event.target.select()" [(ngModel)]="objBarrio.descripcion"
-            placeholder="Descripción" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+            placeholder="Descripción" required>
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>

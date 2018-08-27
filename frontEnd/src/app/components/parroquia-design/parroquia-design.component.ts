@@ -200,12 +200,25 @@ export class ParroquiaDesignComponent implements OnInit {
 
   delete(i) {
     this.images.splice(i, 1);
-    
+
   }
-  
+
   saveInArray() {
     this.images.push({ source: this.urlImagen, alt: 'desc', title: 'img' });
     console.log(this.images);
+  }
+
+  deleteRowAuto(index) {
+    this.objParroquia.autoridad.splice(index, 1);
+  }
+  deleteRowBar(index) {
+    this.objParroquia.barrio.splice(index, 1);
+  }
+  deleteRowAct(index) {
+    this.objParroquia.actividadEco.splice(index, 1);
+  }
+  deleteRowFiesta(index) {
+    this.objParroquia.fiestas.splice(index, 1);
   }
 
 }
