@@ -68,8 +68,8 @@ export class GeneralComponent implements OnInit {
       console.log(err)
      });*/
   }
-  deleteRow(){
-    
+  deleteRow(index){
+    this.lstParroquias.splice(index, 1);
   }
 
 }
