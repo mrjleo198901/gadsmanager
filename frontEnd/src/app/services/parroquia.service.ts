@@ -31,6 +31,12 @@ export class ParroquiaService {
     return this.http.put(this.uri + 'parroquia/' + parroquia._id, parroquia, httpOptions);
   }
 
+  delete(parroquia) {
+    console.log(parroquia)
+    httpOptions.params = undefined;
+    return this.http.delete(this.uri + 'parroquia/' + parroquia, httpOptions)
+  }
+
   getAll(): Observable<any[]> {
     httpOptions.params = undefined;
     return this.http.get<any[]>(this.uri + 'parroquia', httpOptions);

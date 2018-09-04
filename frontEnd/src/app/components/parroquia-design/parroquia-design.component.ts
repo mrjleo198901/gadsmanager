@@ -209,7 +209,8 @@ export class ParroquiaDesignComponent implements OnInit {
   }
 
   deleteRowAuto(index) {
-    this.objParroquia.autoridad.splice(index, 1);
+    console.log(index)
+    //this.objParroquia.autoridad.splice(index, 1);
   }
   deleteRowBar(index) {
     this.objParroquia.barrio.splice(index, 1);

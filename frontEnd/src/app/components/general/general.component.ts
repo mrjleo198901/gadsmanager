@@ -46,6 +46,8 @@ export class GeneralComponent implements OnInit {
     galeria: []
   }
 
+  selectedPar: any;
+
   addParroquia() {
     this.parroquia.register(this.objParroquia).subscribe(data => {
       this.lstParroquias.push(this.objParroquia);
@@ -54,6 +56,20 @@ export class GeneralComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+
+  onRowSelect(event) {
+    console.log(event)
+    
+    /*this.parroquia.delete(this.lstParroquias[index]).subscribe(data => {
+      //this.lstParroquias.splice(index, 1);
+      location.reload();;
+    }, err => {
+      console.log(err)
+     });*/
+  }
+  deleteRow(){
+    
   }
 
 }
