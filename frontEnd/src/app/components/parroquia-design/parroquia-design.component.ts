@@ -200,7 +200,6 @@ export class ParroquiaDesignComponent implements OnInit {
 
   delete(i) {
     this.images.splice(i, 1);
-
   }
 
   saveInArray() {
@@ -208,18 +207,88 @@ export class ParroquiaDesignComponent implements OnInit {
     console.log(this.images);
   }
 
-  deleteRowAuto(index) {
-    console.log(index)
-    //this.objParroquia.autoridad.splice(index, 1);
+  displayAutoC: boolean;
+  onRowSelectAuto(event) {
+    this.objAutoridad = event.data;
+    this.displayAutoC = true;
   }
-  deleteRowBar(index) {
-    this.objParroquia.barrio.splice(index, 1);
+  deleteAuto() {
+    let index = this.objParroquia.autoridad.indexOf(this.objAutoridad);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.objParroquia.autoridad = this.objParroquia.autoridad.filter((val, i) => i != index);
+      this.displayAutoC = false;
+      this.messages.notify('success', "Éxito", "Datos guardados!");
+    });
   }
-  deleteRowAct(index) {
-    this.objParroquia.actividadEco.splice(index, 1);
+  updateAuto() {
+    let index = this.objParroquia.autoridad.indexOf(this.objAutoridad);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.displayAutoC = false;
+      this.messages.notify('success', "Éxito", "Datos guardados!");
+    });
   }
-  deleteRowFiesta(index) {
-    this.objParroquia.fiestas.splice(index, 1);
+
+  displayBarrioC: boolean;
+  onRowSelectBarrio(event) {
+    this.objBarrio = event.data;
+    this.displayBarrioC = true;
+  }
+  deleteBarrio() {
+    let index = this.objParroquia.barrio.indexOf(this.objBarrio);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.objParroquia.barrio = this.objParroquia.barrio.filter((val, i) => i != index);
+      this.displayBarrioC = false;
+      this.messages.notify('success', "Éxito", "Datos guardados!");
+    });
+  }
+  updateBarrio() {
+    let index = this.objParroquia.barrio.indexOf(this.objBarrio);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.displayBarrioC = false;
+      this.messages.notify('success', "Éxito", "Datos guardados!");
+    });
+  }
+
+  displayActC: boolean;
+  onRowSelectAct(event) {
+    this.objActividad = event.data;
+    this.displayActC = true;
+  }
+  deleteAct() {
+    let index = this.objParroquia.actividadEco.indexOf(this.objActividad);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.objParroquia.actividadEco = this.objParroquia.actividadEco.filter((val, i) => i != index);
+      this.displayActC = false;
+      this.messages.notify('success', "Éxito", "Datos guardados!");
+    });
+  }
+  updateAct() {
+    let index = this.objParroquia.actividadEco.indexOf(this.objActividad);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.displayActC = false;
+      this.messages.notify('success', "Éxito", "Datos guardados!");
+    });
+  }
+
+  displayFiestasC: boolean;
+  onRowSelectFiesta(event) {
+    this.objFiestas = event.data;
+    this.displayFiestasC = true;
+  }
+  deleteFiesta() {
+    let index = this.objParroquia.fiestas.indexOf(this.objFiestas);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.objParroquia.fiestas = this.objParroquia.fiestas.filter((val, i) => i != index);
+      this.displayFiestasC = false;
+      this.messages.notify('success', "Éxito", "Datos guardados!");
+    });
+  }
+  updateFiesta() {
+    let index = this.objParroquia.fiestas.indexOf(this.objFiestas);
+    this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      this.displayFiestasC = false;
+      this.messages.notify('success', "Éxito", "Datos guardados!");
+    });
   }
 
 }

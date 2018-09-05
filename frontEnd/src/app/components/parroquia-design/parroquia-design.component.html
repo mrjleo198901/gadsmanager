@@ -44,7 +44,8 @@
   <!--Autoridades-->
   <h4>Autoridades</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
-    <p-table [value]="objParroquia.autoridad">
+    <p-table [value]="objParroquia.autoridad" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelectAuto($event)"
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="10">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
           <button type="button" pButton icon="fa fa-plus" (click)="displayAuto=true" label="Añadir"></button>
@@ -59,21 +60,17 @@
           <th>Teléfono</th>
           <th>Correo</th>
           <th>Profesión</th>
-          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
-        <tr>
+        <tr [pSelectableRow]="car">
           <td>{{car.cedula}}</td>
           <td>{{car.nombre}}</td>
           <td>{{car.cargo}}</td>
-          <td>{{car.fecha}}</td>
+          <td>{{car.fechaFiliacion}}</td>
           <td>{{car.telefono}}</td>
           <td>{{car.correo}}</td>
           <td>{{car.profesion}}</td>
-          <td>
-            <button pButton type="button" (click)="deleteRowAuto(index)" icon="fa fa-close" class="ui-button-danger" label="Eliminar"></button>
-          </td>
         </tr>
       </ng-template>
     </p-table>
@@ -81,7 +78,8 @@
   <!--Barrio/Comunidad-->
   <h4>Barrio/Comunidad</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
-    <p-table [value]="objParroquia.barrio">
+    <p-table [value]="objParroquia.barrio" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelectBarrio($event)"
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="10">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
           <button type="button" pButton icon="fa fa-plus" (click)="displayBarrio=true" label="Añadir"></button>
@@ -93,18 +91,14 @@
           <th>Nro. Habitantes</th>
           <th>Altitud</th>
           <th>Descripción</th>
-          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
-        <tr>
+        <tr [pSelectableRow]="car">
           <td>{{car.presidente}}</td>
           <td>{{car.nroHabitantes}}</td>
           <td>{{car.altitud}}</td>
           <td>{{car.descripcion}}</td>
-          <td>
-            <button pButton type="button" (click)="deleteRowBar(index)" icon="fa fa-close" class="ui-button-danger"  label="Eliminar"></button>
-          </td>
         </tr>
       </ng-template>
     </p-table>
@@ -112,7 +106,8 @@
   <!-- Actividad -->
   <h4>Activiades Económicas</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
-    <p-table [value]="objParroquia.actividadEco">
+    <p-table [value]="objParroquia.actividadEco" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelectAct($event)"
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="10">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
           <button type="button" pButton icon="fa fa-plus" (click)="displayAct=true;" label="Añadir"></button>
@@ -122,16 +117,12 @@
         <tr>
           <th>Nombre</th>
           <th>Descripción</th>
-          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
-        <tr>
+        <tr [pSelectableRow]="car">
           <td>{{car.nombre}}</td>
           <td>{{car.descripcion}}</td>
-          <td>
-            <button pButton type="button" (click)="deleteRowAct(index)" icon="fa fa-close" class="ui-button-danger"  label="Eliminar"></button>
-          </td>
         </tr>
       </ng-template>
     </p-table>
@@ -154,7 +145,8 @@
   <!-- Fiestas Patronales -->
   <h4>Fiestas</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
-    <p-table [value]="objParroquia.fiestas">
+    <p-table [value]="objParroquia.fiestas" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelectFiesta($event)"
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="10">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
           <button type="button" pButton icon="fa fa-plus" (click)="displayFiestas=true;" label="Añadir"></button>
@@ -164,16 +156,12 @@
         <tr>
           <th>Nombre</th>
           <th>Descripción</th>
-          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
-        <tr>
+        <tr [pSelectableRow]="car">
           <td>{{car.nombre}}</td>
           <td>{{car.descripcion}}</td>
-          <td>
-            <button pButton type="button" (click)="deleteRowFiesta(index)" icon="fa fa-close" class="ui-button-danger" label="Eliminar"></button>
-          </td>
         </tr>
       </ng-template>
     </p-table>
@@ -181,12 +169,10 @@
   <!-- Galería -->
   <h4>Galería</h4>
   <p style="color: steelblue">Tamaño máximo 2Mb.</p>
-
   <div class="ui-g-4 show-image" *ngFor="let entry of images;  let i = index">
     <img [(src)]=entry.source style="width: 200px; height: 175px;">
     <input class="delete" type="button" value="Eliminar" (click)="delete(i)" />
   </div>
-
   <form #imagenForm=ngForm>
     <div class="ui-g-12" style="text-align: center;">
       <button type="button" (click)="saveInArray()" style="width: 200px;">Subir</button>
@@ -198,7 +184,6 @@
     </div>
 
   </form>
-
   <br><br>
   <button mat-stroked-button color="primary" (click)="saveAll()" style="width: 100%; text-align: center">Guardar</button>
 </mat-card>
@@ -335,4 +320,144 @@
     <button mat-stroked-button color="primary" style="width: 100%" [disabled]="!formUser3.form.valid">Aceptar</button><br><br>
   </form>
   <button mat-stroked-button color="warn" style="width: 100%" (click)="displayFiestas=false;">Cancelar</button>
+</p-dialog>
+
+<!-- CRUDS -->
+<p-dialog header="Detalle Autoridad" [(visible)]="displayAutoC" [width]="650">
+  <mat-grid-list cols="2" rowHeight="3:1">
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="cedula" type="text" minlength="10" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cedula"
+          placeholder="Cédula" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="nombreAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.nombre"
+          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="cargoAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
+          placeholder="Cargo" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="fechaFiliacion" type="date" minlength="9" (click)="$event.target.select()" [(ngModel)]="objAutoridad.fechaFiliacion"
+          placeholder="Fecha de Filiación" required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="telefonoAut" type="text" minlength="7" maxlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.telefono"
+          placeholder="Teléfono" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="correoAut" type="email" minlength="10" (click)="$event.target.select()" [(ngModel)]="objAutoridad.correo"
+          placeholder="Correo" required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="Profesion" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.profesion"
+          placeholder="Profesión" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-close" (click)="deleteAuto()" label="Elimnar"></button>
+      <button type="button" pButton icon="fa fa-check" (click)="updateAuto()" label="Modificar"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Detalle Barrio" [(visible)]="displayBarrioC" [width]="650">
+  <mat-grid-list cols="2" rowHeight="3:1">
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="nombrePresi" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objBarrio.presidente"
+          placeholder="Presidente" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="nroHab" type="number" min="0" (click)="$event.target.select()" [(ngModel)]="objBarrio.nroHabitantes"
+          placeholder="Numero de Habitantes" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="altitud" type="number" min="0" (click)="$event.target.select()" [(ngModel)]="objBarrio.altitud" placeholder="Altitud"
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="desc" type="text" minlength="7" (click)="$event.target.select()" [(ngModel)]="objBarrio.descripcion"
+          placeholder="Descripción" required>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-close" (click)="deleteBarrio()" label="Elimnar"></button>
+      <button type="button" pButton icon="fa fa-check" (click)="updateBarrio()" label="Modificar"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Detalle Actividad" [(visible)]="displayActC" [width]="650">
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="nombreAct" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objActividad.nombre"
+          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <textarea matInput name="desc" [(ngModel)]="objActividad.descripcion" placeholder="Descripción" required></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-close" (click)="deleteAct()" label="Elimnar"></button>
+      <button type="button" pButton icon="fa fa-check" (click)="updateAct()" label="Modificar"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Detalle Fiesta" [(visible)]="displayFiestasC" [width]="650">
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input matInput name="nombreAct" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objFiestas.nombre"
+          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
+          required>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <textarea matInput name="desc" [(ngModel)]="objFiestas.descripcion" placeholder="Descripción" required></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-close" (click)="deleteFiesta()" label="Elimnar"></button>
+      <button type="button" pButton icon="fa fa-check" (click)="updateFiesta()" label="Modificar"></button>
+    </div>
+  </p-footer>
 </p-dialog>

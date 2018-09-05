@@ -47,6 +47,7 @@ export class GeneralComponent implements OnInit {
   }
 
   selectedPar: any;
+  displayDialog: boolean;
 
   addParroquia() {
     this.parroquia.register(this.objParroquia).subscribe(data => {
@@ -59,17 +60,29 @@ export class GeneralComponent implements OnInit {
   }
 
   onRowSelect(event) {
-    console.log(event)
-    
-    /*this.parroquia.delete(this.lstParroquias[index]).subscribe(data => {
-      //this.lstParroquias.splice(index, 1);
-      location.reload();;
-    }, err => {
-      console.log(err)
-     });*/
+    this.objParroquia = event.data;
+    this.displayDialog = true;
   }
-  deleteRow(index){
-    this.lstParroquias.splice(index, 1);
+
+  delete() {
+    let index = this.lstParroquias.indexOf(this.selectedPar);
+    this.parroquia.delete(this.lstParroquias[index]).subscribe(data => {
+      this.lstParroquias = this.lstParroquias.filter((val, i) => i != index);
+      location.reload();
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  save() {
+    let index = this.lstParroquias.indexOf(this.selectedPar);
+    this.parroquia.update(this.lstParroquias[index]).subscribe(data => {
+      this.lstParroquias = this.lstParroquias.filter((val, i) => i != index);
+      this.objParroquia = null;
+      this.displayDialog = false;
+    }, err => {
+      console.log(err);
+    });
   }
 
 }
