@@ -88,32 +88,35 @@ export class ParroquiaDesignComponent implements OnInit {
   images: any[];
 
   openDialogAutoridad(): void {
-    const dialogRef = this.dialog.open(ParAutoridadComponent, {
-      width: '450px'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
+    this.objAutoridad = {
+      cedula: '',
+      nombre: '',
+      cargo: '',
+      fechaFiliacion: '',
+      telefono: '',
+      correo: '',
+      profesion: ''
+    }
   }
   openDialogBarrio(): void {
-    const dialogRef = this.dialog.open(ParBarrioComponent, {
-      width: '450px'
-    });
-  }
-  openDialogGastro(): void {
-    const dialogRef = this.dialog.open(ParBarrioComponent, {
-      width: '450px'
-    });
+    this.objBarrio = {
+      descripcion: '',
+      nroHabitantes: 0,
+      altitud: 0,
+      presidente: ''
+    }
   }
   openDialogActividad(): void {
-    const dialogRef = this.dialog.open(ParActividadComponent, {
-      width: '450px'
-    });
+    this.objActividad = {
+      nombre: '',
+      descripcion: ''
+    }
   }
-  openDialogTurismo(): void {
-    const dialogRef = this.dialog.open(ParTurismoComponent, {
-      width: '450px'
-    });
+  openDialogFiesta(): void {
+    this.objFiestas = {
+      nombre: '',
+      descripcion: ''
+    }
   }
   openDialogHistoria(): void {
     const dialogRef = this.dialog.open(ParHistoriaComponent, {
