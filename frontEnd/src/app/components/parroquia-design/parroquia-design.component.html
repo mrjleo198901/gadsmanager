@@ -53,13 +53,13 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th>Cédula</th>
-          <th>Nombre</th>
-          <th>Cargo</th>
-          <th>Fecha Filiación</th>
-          <th>Teléfono</th>
-          <th>Correo</th>
-          <th>Profesión</th>
+          <th style="width: 11%">Cédula</th>
+          <th style="width: 19%">Nombre</th>
+          <th style="width: 12%">Cargo</th>
+          <th style="width: 12%">Fecha Filiación</th>
+          <th style="width: 12%">Teléfono</th>
+          <th style="width: 23%">Correo</th>
+          <th style="width: 12%">Profesión</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
@@ -87,10 +87,10 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th>Presidente</th>
-          <th>Nro. Habitantes</th>
-          <th>Altitud</th>
-          <th>Descripción</th>
+          <th style="width: 25%">Presidente</th>
+          <th style="width: 12.5%">Nro. Habitantes</th>
+          <th style="width: 12.5%">Altitud</th>
+          <th style="width: 50%">Descripción</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
@@ -115,8 +115,8 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th>Nombre</th>
-          <th>Descripción</th>
+          <th style="width: 30%">Nombre</th>
+          <th style="width: 70%">Descripción</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
@@ -154,8 +154,8 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th>Nombre</th>
-          <th>Descripción</th>
+          <th style="width: 30%">Nombre</th>
+          <th style="width: 70%">Descripción</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-car>
@@ -207,7 +207,7 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
-          <input matInput name="cargoAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
+          <input matInput name="cargoAut" type="text" minlength="5" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
             placeholder="Cargo" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
             required>
         </mat-form-field>
@@ -339,7 +339,7 @@
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-form-field class="example-full-width">
-        <input matInput name="cargoAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
+        <input matInput name="cargoAut" type="text" minlength="5" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
           placeholder="Cargo" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
           required>
       </mat-form-field>
