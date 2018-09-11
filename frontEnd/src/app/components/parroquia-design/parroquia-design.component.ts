@@ -133,10 +133,10 @@ export class ParroquiaDesignComponent implements OnInit {
   displayAct = false;
   displayFiestas = false;
   save() {
+    let cars = [...this.objParroquia.autoridad];
+    cars.push(this.objAutoridad);
+    this.objParroquia.autoridad = cars;
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
-      let cars = [...this.objParroquia.autoridad];
-      cars.push(this.objParroquia);
-      this.objParroquia.autoridad = cars;
       this.objAutoridad = {
         cedula: '',
         nombre: '',
@@ -156,13 +156,13 @@ export class ParroquiaDesignComponent implements OnInit {
     altitud: 0,
     presidente: ''
   }
-
+  //Guardar barrios
+  
   saveBarrio() {
-    this.objParroquia.barrio.push(this.objBarrio);
+    let cars = [...this.objParroquia.barrio];
+    cars.push(this.objBarrio);
+    this.objParroquia.barrio = cars;
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
-      let cars = [...this.objParroquia.barrio];
-      cars.push(this.objBarrio);
-      this.objParroquia.barrio = cars;
       this.objBarrio = {
         descripcion: '',
         nroHabitantes: 0,
@@ -184,11 +184,10 @@ export class ParroquiaDesignComponent implements OnInit {
   descripcion: any;
 
   saveAct() {
-    this.objParroquia.actividadEco.push(this.objActividad);
+    let cars = [...this.objParroquia.actividadEco];
+    cars.push(this.objActividad);
+    this.objParroquia.actividadEco = cars;
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
-      let cars = [...this.objParroquia.actividadEco];
-      cars.push(this.objActividad);
-      this.objParroquia.actividadEco = cars;
       this.objActividad = {
         nombre: '',
         descripcion: ''
@@ -199,11 +198,10 @@ export class ParroquiaDesignComponent implements OnInit {
   }
 
   saveFiestas() {
-    this.objParroquia.fiestas.push(this.objFiestas);
+    let cars = [...this.objParroquia.fiestas];
+    cars.push(this.objFiestas);
+    this.objParroquia.fiestas = cars;
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
-      let cars = [...this.objParroquia.fiestas];
-      cars.push(this.objFiestas);
-      this.objParroquia.fiestas = cars;
       this.objFiestas = {
         nombre: '',
         descripcion: ''
