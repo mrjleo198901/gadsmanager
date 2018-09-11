@@ -15,11 +15,11 @@ export class GeneralComponent implements OnInit {
   ngOnInit() {
     this.cols = [];
     this.cols = [
-      { field: 'nombre', header: 'Nombre' },
-      { field: 'telefono', header: 'Teléfono' },
-      { field: 'correo', header: 'Correo' },
-      { field: 'lat', header: 'Latitud' },
-      { field: 'lng', header: 'Longitud' }
+      { field: 'nombre', header: 'Nombre', width: '20%' },
+      { field: 'telefono', header: 'Teléfono', width: '50%' },
+      { field: 'correo', header: 'Correo', width: '10%' },
+      { field: 'lat', header: 'Latitud', width: '10%' },
+      { field: 'lng', header: 'Longitud', width: '10%' }
     ];
 
     this.parroquia.getAll().subscribe(data => {
@@ -77,8 +77,20 @@ export class GeneralComponent implements OnInit {
   save() {
     let index = this.lstParroquias.indexOf(this.selectedPar);
     this.parroquia.update(this.lstParroquias[index]).subscribe(data => {
-      this.lstParroquias = this.lstParroquias.filter((val, i) => i != index);
-      this.objParroquia = null;
+      this.objParroquia = {
+        nombre: '',
+        telefono: '',
+        correo: '',
+        latitud: 0,
+        longitud: 0,
+        autoridad: [],
+        barrio: [],
+        actividadEco: [],
+        gastronomia: [],
+        turismo: [],
+        historia: [],
+        galeria: []
+      }
       this.displayDialog = false;
     }, err => {
       console.log(err);

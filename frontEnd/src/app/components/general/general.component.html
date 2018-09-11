@@ -7,8 +7,7 @@
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
           <input matInput name="nombre" type="text" minlength="2" (click)="$event.target.select()" [(ngModel)]="objParroquia.nombre"
-            placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-            required>
+            placeholder="Nombre" required>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
@@ -45,7 +44,7 @@
     <h4>Listado de parroquias</h4>
 
     <p-table #dt [columns]="cols" [value]="lstParroquias" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelect($event)"
-      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="10">
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="10" [autoLayout]="true">
       <ng-template pTemplate="caption">
         <div style="text-align: right">
           <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -69,6 +68,7 @@
         </tr>
       </ng-template>
     </p-table>
+
   </div>
 </mat-card>
 
@@ -78,8 +78,7 @@
     <mat-grid-tile>
       <mat-form-field class="example-full-width">
         <input matInput name="nombre" type="text" minlength="2" (click)="$event.target.select()" [(ngModel)]="objParroquia.nombre"
-          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-          required>
+          placeholder="Nombre" required>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>

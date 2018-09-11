@@ -133,8 +133,19 @@ export class ParroquiaDesignComponent implements OnInit {
   displayAct = false;
   displayFiestas = false;
   save() {
-    this.objParroquia.autoridad.push(this.objAutoridad);
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      let cars = [...this.objParroquia.autoridad];
+      cars.push(this.objParroquia);
+      this.objParroquia.autoridad = cars;
+      this.objAutoridad = {
+        cedula: '',
+        nombre: '',
+        cargo: '',
+        fechaFiliacion: '',
+        telefono: '',
+        correo: '',
+        profesion: ''
+      }
       this.displayAuto = false;
       this.messages.notify('success', "Exito", "Datos guardados!");
     });
@@ -147,9 +158,17 @@ export class ParroquiaDesignComponent implements OnInit {
   }
 
   saveBarrio() {
-    console.log(this.objParroquia)
     this.objParroquia.barrio.push(this.objBarrio);
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      let cars = [...this.objParroquia.barrio];
+      cars.push(this.objBarrio);
+      this.objParroquia.barrio = cars;
+      this.objBarrio = {
+        descripcion: '',
+        nroHabitantes: 0,
+        altitud: 0,
+        presidente: ''
+      }
       this.displayBarrio = false;
       this.messages.notify('success', "Exito", "Datos guardados!");
     });
@@ -167,6 +186,13 @@ export class ParroquiaDesignComponent implements OnInit {
   saveAct() {
     this.objParroquia.actividadEco.push(this.objActividad);
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      let cars = [...this.objParroquia.actividadEco];
+      cars.push(this.objActividad);
+      this.objParroquia.actividadEco = cars;
+      this.objActividad = {
+        nombre: '',
+        descripcion: ''
+      }
       this.displayAct = false;
       this.messages.notify('success', "Exito", "Datos guardados!");
     });
@@ -175,6 +201,13 @@ export class ParroquiaDesignComponent implements OnInit {
   saveFiestas() {
     this.objParroquia.fiestas.push(this.objFiestas);
     this.parroquiaService.update(this.objParroquia).subscribe(data => {
+      let cars = [...this.objParroquia.fiestas];
+      cars.push(this.objFiestas);
+      this.objParroquia.fiestas = cars;
+      this.objFiestas = {
+        nombre: '',
+        descripcion: ''
+      }
       this.displayFiestas = false;
       this.messages.notify('success', "Exito", "Datos guardados!");
     });

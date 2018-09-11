@@ -45,7 +45,7 @@
   <h4>Autoridades</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
     <p-table [value]="objParroquia.autoridad" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelectAuto($event)"
-      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="5">
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="5" [autoLayout]="true">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
           <button type="button" pButton icon="fa fa-plus" (click)="displayAuto=true;openDialogAutoridad();" label="Añadir"></button>
@@ -79,7 +79,7 @@
   <h4>Barrio/Comunidad</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
     <p-table [value]="objParroquia.barrio" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelectBarrio($event)"
-      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="5">
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="5" [autoLayout]="true">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
           <button type="button" pButton icon="fa fa-plus" (click)="displayBarrio=true;openDialogBarrio()" label="Añadir"></button>
@@ -107,7 +107,7 @@
   <h4>Activiades Económicas</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
     <p-table [value]="objParroquia.actividadEco" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelectAct($event)"
-      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="5">
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="5" [autoLayout]="true">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
           <button type="button" pButton icon="fa fa-plus" (click)="displayAct=true;openDialogActividad()" label="Añadir"></button>
@@ -146,7 +146,7 @@
   <h4>Fiestas</h4>
   <mat-grid-list cols="3" rowHeight="3:1">
     <p-table [value]="objParroquia.fiestas" selectionMode="single" [(selection)]="selectedPar" (onRowSelect)="onRowSelectFiesta($event)"
-      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="5">
+      [paginator]="true" [responsive]="true" [paginator]="true" [rows]="5" [autoLayout]="true">
       <ng-template pTemplate="caption">
         <div style="text-align:left">
           <button type="button" pButton icon="fa fa-plus" (click)="displayFiestas=true;openDialogFiesta()" label="Añadir"></button>
@@ -201,15 +201,13 @@
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
           <input matInput name="nombreAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.nombre"
-            placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-            required>
+            placeholder="Nombre" required>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
           <input matInput name="cargoAut" type="text" minlength="5" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
-            placeholder="Cargo" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-            required>
+            placeholder="Cargo" required>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
@@ -233,8 +231,7 @@
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
           <input matInput name="Profesion" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.profesion"
-            placeholder="Profesión" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-            required>
+            placeholder="Profesión" required>
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
@@ -250,8 +247,7 @@
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
           <input matInput name="nombrePresi" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objBarrio.presidente"
-            placeholder="Presidente" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-            required>
+            placeholder="Presidente" required>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
@@ -285,8 +281,7 @@
       <mat-grid-tile>
         <mat-form-field class="example-full-width" style="width: 100%;">
           <input matInput name="nombreAct" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objActividad.nombre"
-            placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-            required>
+            placeholder="Nombre" required>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
@@ -306,8 +301,7 @@
       <mat-grid-tile>
         <mat-form-field class="example-full-width" style="width: 100%;">
           <input matInput name="nombreAct" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objFiestas.nombre"
-            placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-            required>
+            placeholder="Nombre" required>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
@@ -333,15 +327,13 @@
     <mat-grid-tile>
       <mat-form-field class="example-full-width">
         <input matInput name="nombreAut" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.nombre"
-          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-          required>
+          placeholder="Nombre" required>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-form-field class="example-full-width">
         <input matInput name="cargoAut" type="text" minlength="5" (click)="$event.target.select()" [(ngModel)]="objAutoridad.cargo"
-          placeholder="Cargo" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-          required>
+          placeholder="Cargo" required>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -365,8 +357,7 @@
     <mat-grid-tile>
       <mat-form-field class="example-full-width">
         <input matInput name="Profesion" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objAutoridad.profesion"
-          placeholder="Profesión" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-          required>
+          placeholder="Profesión" required>
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>
@@ -383,8 +374,7 @@
     <mat-grid-tile>
       <mat-form-field class="example-full-width">
         <input matInput name="nombrePresi" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objBarrio.presidente"
-          placeholder="Presidente" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-          required>
+          placeholder="Presidente" required>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -420,8 +410,7 @@
     <mat-grid-tile>
       <mat-form-field class="example-full-width">
         <input matInput name="nombreAct" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objActividad.nombre"
-          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-          required>
+          placeholder="Nombre" required>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -443,8 +432,7 @@
     <mat-grid-tile>
       <mat-form-field class="example-full-width">
         <input matInput name="nombreAct" type="text" minlength="8" (click)="$event.target.select()" [(ngModel)]="objFiestas.nombre"
-          placeholder="Nombre" onkeypress='return event.charCode >= 97 && event.charCode <= 122 || event.charCode === 241 || event.charCode === 32 || event.charCode === 209 || event.charCode >= 65 && event.charCode <= 90'
-          required>
+          placeholder="Nombre" required>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
